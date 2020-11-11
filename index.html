@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid customJumbo">
         <div class="container p-1">
           <h1 class="display-5 text-right">Weather Dashboard</h1>
           
@@ -29,7 +29,7 @@
           </div>
 
           <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush cityList">
               <li class="list-group-item">Cras justo odio</li>
               <li class="list-group-item">Dapibus ac facilisis in</li>
               <li class="list-group-item">Vestibulum at eros</li>
@@ -41,34 +41,66 @@
       </div>
 
       <div class="card col-lg-9">
-        <div class="card-header">
+        <div class="card-header cityNameDisplay">
           City Name
         </div>
         <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-          </blockquote>
+          <p class="temp">Temperature</p>
+          <p class="humidity">Humidity</p>
+          <p class="windSpeed">Wind Speed</p>
+          <p class="uvIndex">UV Index</p>
         </div>
 
 
     <div class="city-card-containter d-flex m-1">
 
-        <div class="card text-white bg-primary mb-3 mr-1 ml-1" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+        <div class="card text-white bg-primary mb-3 mr-1 ml-1 custom-card" data-blockNum="1" id="card1" style="max-width: 18rem;">
+            <div class="card-header cardDate">Date</div>
             <div class="card-body">
-              <h5 class="card-title">Primary card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title carIcon"> Icon</h5>
+              <p class="card-text cardTemp">Temperature</p>
+              <p class="card-text cardHumidity">Humidity</p>
             </div>
           </div>
 
-          <div class="card text-white bg-primary mb-3 mr-1 ml-1" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+          <div class="card text-white bg-primary mb-3 mr-1 ml-1 custom-card" data-blockNum="2" id="card2" style="max-width: 18rem;">
+            <div class="card-header cardDate">Date</div>
             <div class="card-body">
-              <h5 class="card-title">Primary card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title carIcon"> Icon</h5>
+              <p class="card-text cardTemp">Temperature</p>
+              <p class="card-text cardHumidity">Humidity</p>
             </div>
           </div>
+
+          <div class="card text-white bg-primary mb-3 mr-1 ml-1 custom-card" data-blockNum="3" id="card3" style="max-width: 18rem;">
+            <div class="card-header cardDate">Date</div>
+            <div class="card-body">
+              <h5 class="card-title carIcon"> Icon</h5>
+              <p class="card-text cardTemp">Temperature</p>
+              <p class="card-text cardHumidity">Humidity</p>
+            </div>
+          </div>
+
+          <div class="card text-white bg-primary mb-3 mr-1 ml-1 custom-card" data-blockNum="4" id="card4" style="max-width: 18rem;">
+            <div class="card-header cardDate">Date</div>
+            <div class="card-body">
+              <h5 class="card-title carIcon"> Icon</h5>
+              <p class="card-text cardTemp">Temperature</p>
+              <p class="card-text cardHumidity">Humidity</p>
+            </div>
+          </div>
+
+          <div class="card text-white bg-primary mb-3 mr-1 ml-1 custom-card" data-blockNum="5"  id="card5" style="max-width: 18rem;">
+            <div class="card-header cardDate">Date</div>
+            <div class="card-body">
+              <h5 class="card-title carIcon"> Icon</h5>
+              <p class="card-text cardTemp">Temperature</p>
+              <p class="card-text cardHumidity">Humidity</p>
+            </div>
+          </div>
+
+         
+
 
     </div>
 
