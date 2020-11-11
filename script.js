@@ -10,6 +10,7 @@ var cardIcon=$(".cardIcon");
 var cardTemp=$(".cardTemp");
 var cardHumidity=$(".cardHumidity");
 
+
 $(".custom-button").on("click", function(){
     var cityName=$("#cityNameInput").val();
     var queryURL="https://api.openweathermap.org/data/2.5/weather?q="+ cityName+",usa&appid=80b777ad3b7652f1518994be4a5ae0fd";
@@ -36,11 +37,24 @@ $(".custom-button").on("click", function(){
         console.log(response);
         var j=3;
         for(var i=0;i<5;i++){
-            var temp=Math.floor((response.list[j].main.temp -273.15) *1.80 +32);
-            $(cardArr[i].children().find(cardDate)).text(response.list[j].dt_txt);
-            $(cardArr[i].children().find(cardIcon)).text(response.list[j].weather.icon);
+            var temp=Math.floor((response.list[j].main.temp_max -273.15) *1.80 +32);
+            $(cardArr[i].find(cardDate)).text(response.list[j].dt_txt);
             $(cardArr[i].children().find(cardTemp)).text("Temp: " + temp);
             $(cardArr[i].children().find(cardHumidity)).text("Humidity: " + response.list[j].main.humidity);
+
+            if(response.list[j].weather[0].main=="Rain"){
+                $(cardArr[i].children().find(cardIcon)).addClass("fas fa-cloud-rain");
+                $(cardArr[i].children().find(cardIcon)).text("");
+            }else if(response.list[j].weather[0].main=="Clouds"){
+                $(cardArr[i].children().find(cardIcon)).addClass("fas fa-cloud");
+                $(cardArr[i].children().find(cardIcon)).text("");
+            }else if(response.list[j].weather[0].main=="Snow"){
+                $(cardArr[i].children().find(cardIcon)).addClass("fas fa-snowflake");
+                $(cardArr[i].children().find(cardIcon)).text("");
+            }else if(response.list[j].weather[0].main=="Clear"){
+                $(cardArr[i].children().find(cardIcon)).addClass("fas fa-sun");
+                $(cardArr[i].children().find(cardIcon)).text("");
+            }
             j+=8;
             
                 }
