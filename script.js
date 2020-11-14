@@ -12,6 +12,14 @@ var cardHumidity=$(".cardHumidity");
 var latitude;
 var longitude;
 var cityName;
+var namesArr=[];
+var storedNames= ["test"];
+console.log(storedNames);
+// storedNames=JSON.parse(localStorage.getItem("names"));
+// if(storedNames.length>1){
+// for(var f=1;f<storedNames.length;f++){
+//     displayWeather(StoredNames[f]);
+// }}
 $(".custom-button").on("click", function(){
     cityName=$("#cityNameInput").val();
     appendNew(cityName);
@@ -26,7 +34,10 @@ function appendNew(cityName){
         newItem.addClass("list-group-item");
         newItem.data("city", cityName);
         cityListEl.append(newItem);
+        namesArr.push(cityName);
+        localStorage.setItem("names", JSON.stringify(namesArr));
         displayWeather(cityName);
+       
 }
 function displayWeather(cityName){
     var queryURL="https://api.openweathermap.org/data/2.5/weather?q="+ cityName+",usa&appid=80b777ad3b7652f1518994be4a5ae0fd";
@@ -69,6 +80,7 @@ function displayWeather(cityName){
     }).then(function(response){
         var j=3;
         for(var i=0;i<5;i++){
+            console.log(response);
             var temp=Math.floor((response.list[j].main.temp_max -273.15) *1.80 +32);
             var date=response.list[j].dt_txt.split("");
             var dateFormat=date[5]+date[6]+date[7]+date[8]+date[9]+date[4]+date[0]+date[1]+date[2]+date[3];
