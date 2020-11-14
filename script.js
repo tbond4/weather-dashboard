@@ -13,21 +13,18 @@ var latitude;
 var longitude;
 var cityName;
 var namesArr=[];
-var storedNames= ["test"];
-console.log(storedNames);
-// storedNames=JSON.parse(localStorage.getItem("names"));
-// if(storedNames.length>1){
-// for(var f=1;f<storedNames.length;f++){
-//     displayWeather(StoredNames[f]);
-// }}
+
+// button listener for search button, saves item in local storage, calls appendNew funciton
 $(".custom-button").on("click", function(){
     cityName=$("#cityNameInput").val();
+    localStorage.setItem("lastCity", cityName);
     appendNew(cityName);
 });
 $(".cityList").on("click", function(event){
     cityName=$(event.target).data("city");
     displayWeather(cityName);
 })
+//creates list item and calls dispalyWeather function
 function appendNew(cityName){
     var newItem=$("<li>");
         newItem.text(cityName);
@@ -39,6 +36,7 @@ function appendNew(cityName){
         displayWeather(cityName);
        
 }
+//dispalys main card data and forcast data
 function displayWeather(cityName){
     var queryURL="https://api.openweathermap.org/data/2.5/weather?q="+ cityName+",usa&appid=80b777ad3b7652f1518994be4a5ae0fd";
     $.ajax({
@@ -80,7 +78,6 @@ function displayWeather(cityName){
     }).then(function(response){
         var j=3;
         for(var i=0;i<5;i++){
-            console.log(response);
             var temp=Math.floor((response.list[j].main.temp_max -273.15) *1.80 +32);
             var date=response.list[j].dt_txt.split("");
             var dateFormat=date[5]+date[6]+date[7]+date[8]+date[9]+date[4]+date[0]+date[1]+date[2]+date[3];
@@ -109,4 +106,10 @@ function displayWeather(cityName){
 
     });
 }
-
+//pulls from local storage and runs it back through functions otherwise console logs nothing in storage
+var storedCity = localStorage.getItem("lastCity");
+if(storedCity == null){
+    console.log("nothing in local storage")
+}else{
+appendNew(storedCity);
+}
